@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # testing
-/__tests__/
+src/__test__/
 /__tests__/*.css
 /__tests__/*.js
 /__tests__/*.json
