@@ -2,10 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="container mx-auto px-4 text-center">
-        <p>&copy; 2023 Level Up. All rights reserved.</p>
-      </div>
+    <footer className="bg-primary text-secondary py-8 text-center mt-8">
+      <p>&copy; 2023 Level Up. All rights reserved.</p>
     </footer>
   );
 };

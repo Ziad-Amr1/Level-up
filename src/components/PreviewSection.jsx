@@ -30,22 +30,22 @@ const PreviewSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <section className="py-16 bg-background px-4">
+      <div className="container mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Game Preview */}
-          <div className="lg:col-span-2 bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="assets/call-of-duty.jpg" alt="Call of Duty" className="w-full h-64 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-4">Call of Duty</h3>
-              <p className="text-gray-700 mb-6">
+          <div className="lg:w-3/4 h-96 relative">
+            <img src="assets/call-of-duty.jpg" alt="Call of Duty" className="w-full h-full object-cover rounded-lg" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-primary to-transparent rounded-b-lg">
+              <h3 className="text-2xl font-bold mb-2 text-secondary">Call of Duty</h3>
+              <p className="text-accent mb-4 max-w-md">
                 Call of Duty is a first-person shooter video game developed by Activision and published by Activision.
               </p>
               <div className="flex space-x-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition-colors">
+                <button className="bg-secondary hover:bg-accent text-primary py-2 px-6 rounded transition-colors">
                   Play For Free
                 </button>
-                <button className="flex items-center text-gray-700 hover:text-red-500 transition-colors">
+                <button className="flex items-center text-accent hover:text-secondary transition-colors">
                   <i className="fas fa-heart mr-2"></i> Add to Wishlist
                 </button>
               </div>
@@ -53,13 +53,13 @@ const PreviewSection = () => {
           </div>
 
           {/* Games List */}
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <h3 className="text-xl font-bold mb-4">Popular Games</h3>
+          <div className="lg:w-1/4 h-96 bg-primary rounded-lg p-4 overflow-y-auto">
+            <h3 className="text-xl font-bold mb-4 text-secondary">Popular Games</h3>
             <ul className="space-y-4">
               {games.map(game => (
-                <li key={game.id} className="flex items-center space-x-3 hover:bg-gray-100 p-2 rounded transition-colors">
+                <li key={game.id} className="flex items-center gap-3 p-2 bg-background hover:bg-primary rounded transition-colors">
                   <img src={game.image} alt={game.title} className="w-16 h-16 object-cover rounded" />
-                  <span className="font-medium">{game.title}</span>
+                  <span className="font-medium text-secondary">{game.title}</span>
                 </li>
               ))}
             </ul>
