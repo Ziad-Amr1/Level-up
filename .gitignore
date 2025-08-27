@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# testing
+/__tests__/
+/__tests__/*.css
+/__tests__/*.js
+/__tests__/*.json
