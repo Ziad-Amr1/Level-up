@@ -1,66 +1,81 @@
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
+import heroImage from "../assets/hero-image.jpg";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, delay, ease: "easeOut" },
+  }),
+};
 
 export default function Hero() {
   return (
     <section
-      className="relative h-screen flex items-center justify-center bg-cover bg-center text-center px-6"
-      style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+      className="relative min-h-screen w-full flex items-center justify-center bg-cover bg-center text-center"
+      style={{ backgroundImage: `url(${heroImage})` }}
     >
-      {/* overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/90"></div>
 
-      {/* المحتوى */}
-      <div className="relative z-10 max-w-3xl">
+      {/* Content */}
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-orbitron font-bold text-white leading-tight drop-shadow-lg"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="show"
+          className="text-4xl sm:text-6xl lg:text-7xl font-orbitron font-bold text-white leading-tight drop-shadow-xl"
         >
           Discover, Play, and Share <br />
-          <span className="bg-gradient-to-r from-[#FFD700] to-[#FFE55C] bg-clip-text text-transparent animate-pulse">
+          <span className="bg-gradient-to-r from-[var(--accent-gold)] to-[#FFE55C] bg-clip-text text-transparent animate-pulse">
             Games You Love
           </span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="mt-6 text-lg md:text-xl text-gray-300"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="show"
+          custom={0.3}
+          className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-300"
         >
           Level Up is your ultimate destination for exploring new games,
           connecting with gamers, and sharing your journey.
         </motion.p>
 
-        {/* الأزرار */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          variants={fadeInUp}
+          initial="hidden"
+          animate="show"
+          custom={0.6}
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
           <a
             href="/store"
-            className="rounded-2xl border border-[#FFD700] bg-gradient-to-br from-[#FFD700] to-[#D4AF37] px-8 py-3 text-lg font-semibold uppercase text-[#051A2D] shadow-md transition-transform hover:-translate-y-1 hover:bg-none hover:text-white"
+            className="rounded-2xl border border-[var(--accent-gold)] bg-gradient-to-br from-[var(--accent-gold)] to-[#D4AF37] px-8 py-3 text-lg font-semibold uppercase text-[var(--primary-dark)] shadow-md transition hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,215,0,0.6)]"
           >
             Explore Games
           </a>
-
           <a
             href="/community"
-            className="rounded-2xl border-2 border-[#FFD700] px-8 py-3 text-lg font-semibold uppercase text-[#FFD700] transition-all hover:-translate-y-1 hover:bg-[#FFD700] hover:text-[#051A2D]"
+            className="rounded-2xl border-2 border-[var(--accent-gold)] px-8 py-3 text-lg font-semibold uppercase text-[var(--accent-gold)] transition hover:-translate-y-1 hover:bg-[var(--accent-gold)] hover:text-[var(--primary-dark)]"
           >
             Join Community
           </a>
         </motion.div>
       </div>
 
-      {/* scroll hint */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-[#FFD700]">
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center text-[var(--accent-gold)]"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
+          className="h-8 w-8 animate-bounce"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -68,7 +83,10 @@ export default function Hero() {
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
-      </div>
+        <span className="mt-1 text-xs tracking-widest text-[var(--accent-gold)]">
+          Scroll Down
+        </span>
+      </motion.div>
     </section>
   );
 }
