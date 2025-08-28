@@ -1,210 +1,267 @@
-import { useEffect, useMemo, useState } from "react";
+// src/components/Navbar.jsx
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar({
-  logoUrl = 'src/images/logo-2.png',
+  logoUrl = "/logo-2.png",
   brand = "LEVEL UP",
   links = [
-    { label: "Home", href: "/index.html" },
-    { label: "Store", href: "/store.html" },
-    { label: "Community", href: "/community.html" },
+    { label: "Home", href: "/" },
+    { label: "Store", href: "/store" },
+    { label: "Community", href: "/community" },
   ],
-  signHref = "/sign.html",
-  loginHref = "#",
-  onLogin, // optional callback if you don't want a href for Login
-  currentPath, // optional: pass to control active link (defaults to window.location.pathname)
-  profileNode, // optional: React node to render a user profile avatar/button
+  signHref = "/sign",
+  loginHref = "/login",
+  onLogin,
+  currentPath,
+  profileNode,
 }) {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileRef = useRef(null);
+  const navRef = useRef(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Determine active link
   const pathname = useMemo(() => {
     if (typeof currentPath === "string") return currentPath;
     if (typeof window !== "undefined") return window.location.pathname;
     return "/";
   }, [currentPath]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const DEBUG = false;
+    const hero = document.querySelector(".hero");
+
+    const getScrollTop = () => {
+      if (typeof window === "undefined") return 0;
+      const el = document.scrollingElement || document.documentElement || document.body;
+      return window.pageYOffset ?? el.scrollTop ?? 0;
+    };
+
+    if (hero) {
+      if (DEBUG) console.debug("[Navbar] using IntersectionObserver on .hero");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setScrolled(!entry.isIntersecting);
+            if (DEBUG) console.debug("[Navbar][IO] isIntersecting:", entry.isIntersecting);
+          });
+        },
+        { threshold: 0.1 }
+      );
+      io.observe(hero);
+      return () => io.disconnect();
+    }
+
+    const scrollEl = document.scrollingElement || document.documentElement || document.body;
+    if (DEBUG) console.debug("[Navbar] no .hero found — using scroll listener on:", scrollEl);
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = getScrollTop();
+        if (DEBUG) console.debug("[Navbar][scroll] y:", y);
+        setScrolled(y > 30);
+        ticking = false;
+      });
+    };
+
+    onScroll();
+    scrollEl.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      scrollEl.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (dark) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, [dark]);
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (!mobileRef.current) return;
+      if (!mobileRef.current.contains(e.target)) setMobileOpen(false);
+    }
+    if (mobileOpen) {
+      document.addEventListener("mousedown", handleClick);
+      document.addEventListener("touchstart", handleClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("touchstart", handleClick);
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const mobileVariants = {
+    hidden: { opacity: 0, y: -8 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.22, ease: "easeOut" } },
+    exit: { opacity: 0, y: -6, transition: { duration: 0.18, ease: "easeIn" } },
+  };
+
   return (
     <nav
-      className={[
-        "fixed inset-x-0 top-0 z-50 border-b-2 border-[#FFD700]",
-        "h-20 flex items-center transition-all duration-300",
-        scrolled
-          ? "bg-[rgba(5,31,48,0.95)] backdrop-blur-md"
-          : "bg-[#051A2D]",
-      ].join(" ")}
-      role="navigation"
-      aria-label="Main"
+      ref={navRef}
+      className={`fixed inset-x-0 top-0 z-50 h-20 flex items-center transition-all duration-300
+        ${scrolled ? "bg-[#051f30]/70 backdrop-blur-md shadow-md" : "bg-transparent"}
+      `}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-6">
-        {/* Brand */}
-        <a href="#" className="group flex items-center gap-2 select-none">
-          <img
-            src={logoUrl}
-            alt="Level Up logo"
-            className="h-8 w-auto object-contain"
-            loading="eager"
-            decoding="async"
-          />
-          <h1
-            className="text-2xl font-extrabold tracking-wide bg-gradient-to-r from-[#FFD700] to-[#FFE55C] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,215,0,0.30)]"
-            style={{ fontFamily: "Orbitron, system-ui, sans-serif" }}
-          >
+      <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-2">
+          <img src={logoUrl} alt={brand} className="h-8 w-auto" />
+          <span className="text-xl font-orbitron font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
             {brand}
-          </h1>
+          </span>
         </a>
 
-        {/* Hamburger */}
+        {/* Desktop Links */}
+        <ul className="hidden md:flex items-center gap-6">
+          {links.map((link) => {
+            const isActive =
+              pathname === link.href ||
+              pathname.endsWith(link.href) ||
+              pathname === link.href.replace(/\.html$/, "");
+            return (
+              <li key={link.href} className="relative group">
+                <a
+                  href={link.href}
+                  className={`relative text-sm font-medium transition
+                    ${isActive ? "text-yellow-300" : "text-white/90 hover:text-yellow-300"}
+                  `}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  <span>{link.label}</span>
+                  {/* underline using scale-x + transform-origin */}
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[2px] w-full bg-yellow-400 transform transition-transform duration-300
+                      ${isActive ? "scale-x-100 origin-left" : "scale-x-0 origin-right group-hover:scale-x-100"}
+                    `}
+                  />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Desktop Buttons (outline style so Hero CTA stays dominant) */}
+        <div className="hidden md:flex items-center gap-3">
+          <motion.a
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            href={signHref}
+            className="px-4 py-2 rounded-full text-sm font-semibold
+              border border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-gray-900 transition"
+          >
+            Sign Up
+          </motion.a>
+
+          {onLogin ? (
+            <motion.button
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={onLogin}
+              className="px-4 py-2 rounded-full text-sm font-semibold
+                border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition"
+            >
+              Login
+            </motion.button>
+          ) : (
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              href={loginHref}
+              className="px-4 py-2 rounded-full text-sm font-semibold
+                border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition"
+            >
+              Login
+            </motion.a>
+          )}
+
+          {profileNode && <div className="ml-1">{profileNode}</div>}
+
+          <button
+            onClick={() => setDark(!dark)}
+            className="p-2 rounded-full bg-gray-800/60 hover:bg-gray-700 text-yellow-300 transition"
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
         <button
-          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#FFD700]/90 md:hidden"
-          aria-label="Toggle Menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          className="md:hidden p-2 text-white"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
-          <span className="sr-only">Menu</span>
-          <div className="space-y-1.5">
-            <span
-              className={
-                "block h-0.5 w-5 transition-all " +
-                (open ? "translate-y-[7px] rotate-45 bg-white" : "bg-white")
-              }
-            />
-            <span
-              className={
-                "block h-0.5 w-5 transition-opacity " +
-                (open ? "opacity-0" : "opacity-100 bg-white")
-              }
-            />
-            <span
-              className={
-                "block h-0.5 w-5 transition-all " +
-                (open ? "-translate-y-[7px] -rotate-45 bg-white" : "bg-white")
-              }
-            />
-          </div>
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
+      </div>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-1 md:flex">
-          {links.map((l) => {
-            const isActive = pathname.endsWith(l.href) || pathname === l.href || pathname === l.href.replace(/\.html$/, "");
-            return (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className={[
-                    "px-3 py-2 rounded-lg font-medium transition-colors",
-                    "text-white/90 hover:text-[#FFD700]",
-                    isActive ? "text-[#FFD700] font-semibold" : "",
-                  ].join(" ")}
-                >
-                  {l.label}
-                </a>
-              </li>
-            );
-          })}
-
-          {/* Sign Up */}
-          <li className="ml-1">
-            <a
-              href={signHref}
-              className="rounded-2xl border border-[#FFD700] bg-gradient-to-br from-[#FFD700] to-[#D4AF37] px-5 py-1.5 text-sm font-semibold uppercase text-[#051A2D] transition-transform hover:-translate-y-0.5 hover:bg-none hover:text-white"
-            >
-              Sign Up
-            </a>
-          </li>
-
-          {/* Login */}
-          <li>
-            {onLogin ? (
-              <button
-                onClick={onLogin}
-                className="ml-2 rounded-2xl border-2 border-transparent bg-[#0A66C2] px-5 py-1.5 text-sm font-semibold uppercase text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(10,102,194,0.30),_inset_0_4px_8px_rgba(10,102,194,0.30)]"
+      {/* Mobile Dropdown (AnimatePresence for exit animation) */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            ref={mobileRef}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={mobileVariants}
+            className="md:hidden absolute top-20 inset-x-0 bg-[#051f30]/95 backdrop-blur-lg shadow-lg px-6 py-6 flex flex-col gap-4"
+          >
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-white/90 hover:text-yellow-300 transition text-base font-medium"
               >
-                Login
-              </button>
-            ) : (
+                {link.label}
+              </a>
+            ))}
+
+            <div className="flex flex-col gap-3 mt-2">
+              <a
+                href={signHref}
+                className="px-4 py-2 text-center rounded-full text-sm font-semibold
+                  border border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-gray-900 transition"
+              >
+                Sign Up
+              </a>
+
               <a
                 href={loginHref}
-                className="ml-2 rounded-2xl border-2 border-transparent bg-[#0A66C2] px-5 py-1.5 text-sm font-semibold uppercase text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(10,102,194,0.30),_inset_0_4px_8px_rgba(10,102,194,0.30)]"
+                className="px-4 py-2 text-center rounded-full text-sm font-semibold
+                  border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition"
               >
                 Login
               </a>
-            )}
-          </li>
 
-          {/* Profile slot */}
-          {profileNode ? <li className="ml-2 flex items-center">{profileNode}</li> : null}
-        </ul>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        className={[
-          "md:hidden overflow-hidden transition-[max-height] duration-300",
-          open ? "max-h-96" : "max-h-0",
-          "w-full bg-[#051A2D]",
-        ].join(" ")}
-      >
-        <ul className="space-y-1 px-4 pb-4 pt-2">
-          {links.map((l) => {
-            const isActive = pathname.endsWith(l.href) || pathname === l.href || pathname === l.href.replace(/\.html$/, "");
-            return (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className={[
-                    "block w-full rounded-lg px-3 py-2",
-                    "text-white/90 hover:text-[#FFD700]",
-                    isActive ? "text-[#FFD700] font-semibold" : "",
-                  ].join(" ")}
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </a>
-              </li>
-            );
-          })}
-          <li className="pt-2">
-            <a
-              href={signHref}
-              className="block w-full rounded-2xl border border-[#FFD700] bg-gradient-to-br from-[#FFD700] to-[#D4AF37] px-4 py-2 text-center text-sm font-semibold uppercase text-[#051A2D]"
-              onClick={() => setOpen(false)}
-            >
-              Sign Up
-            </a>
-          </li>
-          <li>
-            {onLogin ? (
               <button
-                onClick={() => {
-                  setOpen(false);
-                  onLogin();
-                }}
-                className="mt-2 block w-full rounded-2xl border-2 border-transparent bg-[#0A66C2] px-4 py-2 text-center text-sm font-semibold uppercase text-white"
+                onClick={() => setDark(!dark)}
+                className="p-2 rounded-full bg-gray-800/60 hover:bg-gray-700 text-yellow-300 transition w-fit self-center"
               >
-                Login
+                {dark ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-            ) : (
-              <a
-                href={loginHref}
-                className="mt-2 block w-full rounded-2xl border-2 border-transparent bg-[#0A66C2] px-4 py-2 text-center text-sm font-semibold uppercase text-white"
-                onClick={() => setOpen(false)}
-              >
-                Login
-              </a>
-            )}
-          </li>
-          {profileNode ? <li className="pt-1">{profileNode}</li> : null}
-        </ul>
-      </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
