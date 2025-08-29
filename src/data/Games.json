@@ -42,7 +42,7 @@
         "Dynamic Weather",
         "Branching Story"
       ],
-      "cover_image": "../assets/games/The Witcher 3 Wild Hunt.jpg",
+      "cover_image": "/images/games/The Witcher 3 Wild Hunt.jpg",
       "screenshots": [
         "https://example.com/witcher3-1.jpg"
       ],
@@ -113,7 +113,7 @@
         "Career Mode",
         "Ultimate Team"
       ],
-      "cover_image": "../assets/games/FIFA 23.jpg",
+      "cover_image": "/images/games/FIFA 23.jpg",
       "screenshots": [
         "https://example.com/fifa23-1.jpg"
       ],
@@ -178,7 +178,7 @@
         "Customizable Characters",
         "Cyberware"
       ],
-      "cover_image": "../assets/games/Cyberpunk 2077.jpg",
+      "cover_image": "/images/games/Cyberpunk 2077.jpg",
       "stock": 90,
       "is_available": true
     },
@@ -202,7 +202,7 @@
         "Wild West",
         "Story-Driven"
       ],
-      "cover_image": "../assets/games/Red Dead Redemption 2.jpg",
+      "cover_image": "/images/games/Red Dead Redemption 2.jpg",
       "system_requirements": {
         "pc": {
           "os": "Windows 10",
@@ -240,7 +240,7 @@
         "Building",
         "Creativity"
       ],
-      "cover_image": "../assets/games/minecraft.jpg",
+      "cover_image": "/images/games/minecraft.jpg",
       "release_date": "2011-11-18",
       "publisher": "Mojang Studios",
       "rating": 4.8,
@@ -273,7 +273,7 @@
         "Open World"
       ],
       "developer": "Rockstar Games",
-      "cover_image": "../assets/games/Grand Theft Auto V.jpg",
+      "cover_image": "/images/games/Grand Theft Auto V.jpg",
       "platforms": [
         "PC",
         "PlayStation 4",
@@ -334,9 +334,9 @@
         "Customizable Characters",
         "Elden Ring"
       ],
-      "cover_image": "../assets/games/Elden Ring.jpg",
+      "cover_image": "/images/games/Elden Ring.jpg",
       "screenshots": [
-        "../assets/games/Elden Ring-1.jpg"
+        "/images/games/Elden Ring-1.jpg"
       ],
       "system_requirements": {
         "pc": {
@@ -395,9 +395,9 @@
         "Career Mode",
         "Ultimate Team"
       ],
-      "cover_image": "../assets/games/Fortnite.jpg",
+      "cover_image": "/images/games/Fortnite.jpg",
       "screenshots": [
-        "../assets/games/Fortnite-1.jpg"
+        "/images/games/Fortnite-1.jpg"
       ],
       "system_requirements": {
         "pc": {
@@ -460,9 +460,9 @@
         "Career Mode",
         "Ultimate Team"
       ],
-      "cover_image": "../assets/games/Apex Legends.jpg",
+      "cover_image": "/images/games/Apex Legends.jpg",
       "screenshots": [
-        "../assets/games/Apex Legends-1.jpg"
+        "/images/games/Apex Legends-1.jpg"
       ],
       "system_requirements": {
         "pc": {
@@ -495,7 +495,7 @@
         "Adventure",
         "Open World"
       ],
-      "cover_image": "../assets/games/The Legend of Zelda Breath of the Wild.jpg",
+      "cover_image": "/images/games/The Legend of Zelda Breath of the Wild.jpg",
       "publisher": "Nintendo",
       "rating": 4.9,
       "system_requirements": {
@@ -520,7 +520,7 @@
         "Multiplayer"
       ],
       "developer": "Blizzard",
-      "cover_image": "../assets/games/Overwatch 2.jpg",
+      "cover_image": "/images/games/Overwatch 2.jpg",
       "platforms": [
         "PC",
         "PlayStation 5",
@@ -556,7 +556,7 @@
         "Battle Royale",
         "FPS"
       ],
-      "cover_image": "../assets/games/Call of Duty Warzone.jpg",
+      "cover_image": "/images/games/Call of Duty Warzone.jpg",
       "platforms": [
         "PC",
         "PlayStation 5",
@@ -592,7 +592,7 @@
         "Party",
         "Multiplayer"
       ],
-      "cover_image": "../assets/games/Among Us.png",
+      "cover_image": "/images/games/Among Us.png",
       "platforms": [
         "PC",
         "Nintendo Switch",
@@ -627,8 +627,8 @@
       "languages": { "audio": ["English"], "text": ["English", "Arabic"] },
       "multiplayer": { "online": true, "local": 4 },
       "features": ["Cross-Platform", "Competitive Matches"],
-      "cover_image": "../assets/games/Rocket League.jpg",
-      "screenshots": ["../assets/games/RocketLeague-1.jpg"],
+      "cover_image": "/images/games/Rocket League.jpg",
+      "screenshots": ["/images/games/RocketLeague-1.jpg"],
       "system_requirements": {
         "pc": {
           "os": "Windows 7",
@@ -657,8 +657,8 @@
       "languages": { "audio": ["English"], "text": ["English", "Arabic"] },
       "multiplayer": false,
       "features": ["Exploration", "RPG Elements"],
-      "cover_image": "../assets/games/Horizon Forbidden West.jpg",
-      "screenshots": ["../assets/games/HorizonForbiddenWest-1.jpg"],
+      "cover_image": "/images/games/Horizon Forbidden West.jpg",
+      "screenshots": ["/images/games/HorizonForbiddenWest-1.jpg"],
       "system_requirements": {
         "console": {
           "os": "PlayStation 5",
@@ -684,7 +684,7 @@
         "Action",
         "Adventure"
       ],
-      "cover_image": "../assets/games/God of War Ragnarok.jpg",
+      "cover_image": "/images/games/God of War Ragnarok.jpg",
       "release_date": "2022-11-09",
       "developer": "Santa Monica Studio",
       "publisher": "Sony Interactive Entertainment",
@@ -706,7 +706,7 @@
         "Boss Fights"
       ],
       "screenshots": [
-        "../assets/games/GodOfWarRagnarok-1.jpg"
+        "/images/games/GodOfWarRagnarok-1.jpg"
       ],
       "system_requirements": {
         "console": {
@@ -736,7 +736,7 @@
         "Simulation",
         "Social"
       ],
-      "cover_image": "../assets/games/Animal Crossing New Horizons.jpg",
+      "cover_image": "/images/games/Animal Crossing New Horizons.jpg",
       "release_date": "2020-03-20",
       "developer": "Nintendo",
       "publisher": "Nintendo",
@@ -760,7 +760,7 @@
         "Seasonal Events"
       ],
       "screenshots": [
-        "../assets/games/AnimalCrossing-1.jpg"
+        "/images/games/AnimalCrossing-1.jpg"
       ],
       "system_requirements": {
         "console": {
@@ -787,7 +787,7 @@
         "Horror",
         "Action"
       ],
-      "cover_image": "../assets/games/Resident Evil 4 Remake.jpg",
+      "cover_image": "/images/games/Resident Evil 4 Remake.jpg",
       "platforms": [
         "PC",
         "PlayStation 5"
@@ -813,7 +813,7 @@
         "Inventory System"
       ],
       "screenshots": [
-        "../assets/games/RE4Remake-1.jpg"
+        "/images/games/RE4Remake-1.jpg"
       ],
       "system_requirements": {
         "pc": {
@@ -840,7 +840,7 @@
         "Sci-Fi",
         "RPG"
       ],
-      "cover_image": "../assets/games/Starfield.jpg",
+      "cover_image": "/images/games/Starfield.jpg",
       "platforms": [
         "PC",
         "Xbox Series X"
@@ -865,7 +865,7 @@
         "Ship Building"
       ],
       "screenshots": [
-        "../assets/games/Starfield-1.jpg"
+        "/images/games/Starfield-1.jpg"
       ],
       "system_requirements": {
         "pc": {
@@ -898,8 +898,8 @@
       "languages": { "audio": ["English"], "text": ["English", "Arabic"] },
       "multiplayer": { "online": true, "local": 2 },
       "features": ["Farming", "Relationship Building"],
-      "cover_image": "../assets/games/Stardew Valley.jpg",
-      "screenshots": ["../assets/games/StardewValley-1.jpg"],
+      "cover_image": "/images/games/Stardew Valley.jpg",
+      "screenshots": ["/images/games/StardewValley-1.jpg"],
       "system_requirements": {
         "pc": {
           "os": "Windows Vista or greater",
@@ -928,8 +928,8 @@
       "languages": { "audio": ["English", "Chinese"], "text": ["English", "Arabic"] },
       "multiplayer": false,
       "features": ["Open World", "Hack and Slash"],
-      "cover_image": "../assets/games/Wuthering-Waves.jpg",
-      "screenshots": ["../assets/games/Wuthering-Waves-1.jpg"],
+      "cover_image": "/images/games/wuthering-waves.jpg",
+      "screenshots": ["/images/games/Wuthering-Waves-1.jpg"],
       "trailer": "https://example.com/wuthering-waves.mp4",
       "system_requirements": {
         "pc": {
@@ -959,8 +959,8 @@
       "languages": { "audio": ["English"], "text": ["English", "Arabic"] },
       "multiplayer": false,
       "features": ["Open World", "Story-Driven"],
-      "cover_image": "../assets/games/days-gone-black.png",
-      "screenshots": ["../assets/games/Days-Gone-1.jpg"],
+      "cover_image": "/images/games/days-gone-black.png",
+      "screenshots": ["/images/games/Days-Gone-1.jpg"],
       "system_requirements": {
         "pc": {
           "os": "Windows 10",
@@ -989,8 +989,8 @@
       "languages": { "audio": ["English", "Chinese", "Japanese"], "text": ["English", "Arabic"] },
       "multiplayer": true,
       "features": ["Co-op Mode", "Exploration"],
-      "cover_image": "../assets/games/Genshin-Impact.jpg",
-      "screenshots": ["../assets/games/Genshin-1.jpg"],
+      "cover_image": "/images/games/genshin-impact.jpg",
+      "screenshots": ["/images/games/Genshin-1.jpg"],
       "system_requirements": {
         "pc": {
           "os": "Windows 10",
@@ -1019,8 +1019,8 @@
       "languages": { "audio": ["English", "Chinese", "Japanese"], "text": ["English", "Arabic"] },
       "multiplayer": false,
       "features": ["Turn-Based Combat", "Space Exploration"],
-      "cover_image": "../assets/games/rappa-honkai-star-3840x2160-19777.jpg",
-      "screenshots": ["../assets/games/Honkai-1.jpg"],
+      "cover_image": "/images/games/rappa-honkai-star-3840x2160-19777.jpg",
+      "screenshots": ["/images/games/Honkai-1.jpg"],
       "system_requirements": {
         "pc": {
           "os": "Windows 10",
