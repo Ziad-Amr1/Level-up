@@ -1,58 +1,75 @@
 @import "tailwindcss";
 
-html {
+/* ======= Base Reset ======= */
+html, body, #root {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
 }
 
 * {
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) var(--navbar-scrolled-bg);
 }
 
 /* ======= Root Variables ======= */
 :root {
-    /* Colors */
-    --primary-dark: #051A2D;
-    --primary-blue: #0A66C2;
-    --secondary-dark: #1A2B3C;
-    --accent-gold: #FFD700;
-    --text-primary: #FFFFFF;
-    --text-secondary: #C0C0C0;
+  /* Colors */
+  --primary-dark: #051A2D;
+  --primary-blue: #0A66C2;
+  --secondary-dark: #1A2B3C;
+  --accent-gold: #FFD700;
+  --text-primary: #FFFFFF;
+  --text-secondary: #C0C0C0;
+  --card-bg: #0A1E2F;
+  --card-hover-bg: #123447;
 
-    /* navbar-scrolled-bg */
-    --navbar-scrolled-bg: rgba(5, 31, 48, 0.95);
+  /* Navbar */
+  --navbar-scrolled-bg: rgba(5, 31, 48, 0.95);
 
-    /* spacing */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 2rem;
-    --space-lg: 4rem;
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
 
-    /* Border */
-    --border-radius: 10px;
-    --border-radius1: 8px;
-    --border-gold: 2px solid var(--accent-gold);
+  /* Border */
+  --border-radius: 10px;
+  --border-radius1: 8px;
+  --border-gold: 2px solid var(--accent-gold);
 
-    /* Transition */
-    --transition: all 0.3s ease;
+  /* Transition */
+  --transition: all 0.3s ease;
 }
 
-/* ====== General Body Styling ====== */
+.dark {
+  /* Dark Mode */
+  --primary-dark: #0a0a0a;
+  --secondary-dark: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-gold: #ffd700;
+}
+
+/* ======= Typography ======= */
 body {
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    font-family: 'Inter', sans-serif;
-    background-color: var(--primary-dark);
-    color: var(--text-primary);
-    line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif;
-    margin-bottom: var(--spacing-sm);
+  font-family: 'Orbitron', sans-serif;
 }
 
-.NAVBAR {
-    background-color: var(--navbar-scrolled-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: var(--border-gold) !important;
+.hover-none:hover {
+  transform: none !important;
+  box-shadow: none !important;
 }
