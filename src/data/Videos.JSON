@@ -1,0 +1,46 @@
+{
+    "video_url":  [
+    {
+  "1": "https://www.youtube.com/embed/XHrskkHf958?autoplay=1&mute=1&loop=1&playlist=XHrskkHf958",
+  "2": "https://www.youtube.com/embed/o3V-GvvzjE4?autoplay=1&mute=1&loop=1&playlist=o3V-GvvzjE4",
+  "3": "https://www.youtube.com/embed/qIcTM8WXFjk?autoplay=1&mute=1&loop=1&playlist=qIcTM8WXFjk",
+  "4": "https://www.youtube.com/embed/eaW0tYpxyp0?autoplay=1&mute=1&loop=1&playlist=eaW0tYpxyp0",
+  "5": "https://www.youtube.com/embed/MmB9b5njVbA?autoplay=1&mute=1&loop=1&playlist=MmB9b5njVbA",
+  "6": "https://www.youtube.com/embed/QkkoHAzjnUs?autoplay=1&mute=1&loop=1&playlist=QkkoHAzjnUs",
+  "7": "https://www.youtube.com/embed/E3Huy2cdih0?autoplay=1&mute=1&loop=1&playlist=E3Huy2cdih0",
+  "8": "https://www.youtube.com/embed/2gUtfBmw86Y?autoplay=1&mute=1&loop=1&playlist=2gUtfBmw86Y",
+  "9": "https://www.youtube.com/embed/innmNewjkuk?autoplay=1&mute=1&loop=1&playlist=innmNewjkuk",
+  "10": "https://www.youtube.com/embed/zw47_q9wbBE?autoplay=1&mute=1&loop=1&playlist=zw47_q9wbBE",
+  "11": "https://www.youtube.com/embed/dZl1yGUetjI?autoplay=1&mute=1&loop=1&playlist=dZl1yGUetjI",
+  "12": "https://www.youtube.com/embed/0E44DClsX5Q?autoplay=1&mute=1&loop=1&playlist=0E44DClsX5Q",
+  "13": "https://www.youtube.com/embed/NSJ4cESNQfE?autoplay=1&mute=1&loop=1&playlist=NSJ4cESNQfE",
+  "14": "https://www.youtube.com/embed/SgSX3gOrj60?autoplay=1&mute=1&loop=1&playlist=SgSX3gOrj60",
+  "15": "https://www.youtube.com/embed/Lq594XmpPBg?autoplay=1&mute=1&loop=1&playlist=Lq594XmpPBg",
+  "16": "https://www.youtube.com/embed/EE-4GvjKcfs?autoplay=1&mute=1&loop=1&playlist=EE-4GvjKcfs",
+  "17": "https://www.youtube.com/embed/_3YNL0OWio0?autoplay=1&mute=1&loop=1&playlist=_3YNL0OWio0",
+  "18": "https://www.youtube.com/embed/IdS5Mml5g4Q?autoplay=1&mute=1&loop=1&playlist=IdS5Mml5g4Q",
+  "19": "https://www.youtube.com/embed/kfYEiTdsyas?autoplay=1&mute=1&loop=1&playlist=kfYEiTdsyas",
+  "20": "https://www.youtube.com/embed/ot7uXNQskhs?autoplay=1&mute=1&loop=1&playlist=ot7uXNQskhs",
+},
+
+{
+  "21": {
+    "title": "Wuthering Waves",
+    "trailer_url": "https://www.youtube.com/embed/hRhVca9Aeu4?autoplay=1&mute=1&loop=1&playlist=hRhVca9Aeu4"
+  },
+  "22": {
+    "title": "Days Gone Black",
+    "trailer_url": "https://www.youtube.com/embed/UjsO9QM_3a4?autoplay=1&mute=1&loop=1&playlist=UjsO9QM_3a4"
+  },
+  "23": {
+    "title": "Genshin Impact",
+    "trailer_url": "https://www.youtube.com/embed/HLUY1nICQRY?autoplay=1&mute=1&loop=1&playlist=HLUY1nICQRY"
+  },
+  "24": {
+    "title": "Honkai: Star Rail",
+    "trailer_url": "https://www.youtube.com/embed/xE9Qk0KRYZ8?autoplay=1&mute=1&loop=1&playlist=xE9Qk0KRYZ8"
+  }
+}
+
+]
+}
