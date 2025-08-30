@@ -929,8 +929,8 @@
       "multiplayer": false,
       "features": ["Open World", "Hack and Slash"],
       "cover_image": "/images/games/wuthering-waves.jpg",
-      "screenshots": ["/images/games/Wuthering-Waves-1.jpg"],
-      "trailer": "https://example.com/wuthering-waves.mp4",
+      "screenshots": ["/public/images/games/Rover.jpeg", "/public/images/games/Rover2.jpeg"],
+      "trailer_url": "https://www.youtube.com/embed/hRhVca9Aeu4?autoplay=1&mute=1&loop=1&playlist=hRhVca9Aeu4",
       "system_requirements": {
         "pc": {
           "os": "Windows 10",
