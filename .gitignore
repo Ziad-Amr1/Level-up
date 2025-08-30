@@ -28,3 +28,9 @@ src/__test__/
 /__tests__/*.css
 /__tests__/*.js
 /__tests__/*.json
+
+# Add components.json
+/components.json
+
+# Add jsconfig.json
+jsconfig.json
