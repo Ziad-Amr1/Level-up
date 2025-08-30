@@ -33,4 +33,4 @@ src/__test__/
 /components.json
 
 # Add jsconfig.json
-jsconfig.json
+/jsconfig.json
